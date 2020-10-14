@@ -1,6 +1,6 @@
 import gui
-import time
 
-# TODO Load all question data
+# Start the UI
 interface = gui.Interface()
+
 
