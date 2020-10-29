@@ -1,5 +1,5 @@
-Vind jij het leuk om te programmeren?	Ja, ik vind het hartstikke leuk om te programmeren;1	Nee, ik vind het kaulo saai;0
-Los je graag puzzels op?	Ja, ik hou van puzzelen;1	Nee, puzzelen is niet mijn sterkste vak;0
-Werk je graag zelfstandig?	Ik werk het liefst zelfstandig;1	Nee, ik werk liever samen;0
-Ben je geïnteresseerd in softwaresystemen?	Ja, ik vind softwaresystemen heel interessant;1	Nee, ik ben meer geïnteresseerd in andere dingen;0
-Heb je geen moeite met urenlang achter een computerscherm te zitten?	Nee, daar heb ik geen moeite mee;1	Ja, ik doe liever ook nog andere dingen;0
+Welk van de volgende beroepen zie je jezelf later wel uitvoeren?	UI/UX designer;1	Full stack developer;2	Back-end developer;3	Tuinman;0
+Vind je het leuk om al je aandacht op een probleem te storten en zo tot een oplossing te komen?	Ik geef de hoop al snel op als ik ergens niet uit kom;1	De eerste uren wel, als het probleem blijft haak ik af.;2	Als ik iets niet begrijp dan houd het voor mij vrijwel meteen op;0	Ik kan mezelf uren bezighouden met het oplossen van een probleem;3
+Welke houding past het beste bij je wanneer je in team verband werkt?	Ik neem graag de leiding;3	Ik neem een passieve rol aan;0	Ik neem een actieve rol aan, maar niet de leiding;3	Team verband? Wat is dat?;0
+Als je een website of programma gebruikt vraag je je dan al snel af hoe dit in elkaar is gezet?	Zo lang het maar werkt vind ik het helemaal prima;0	Ja, ik ben benieuwd hoe mensen dit programma hebben gemaakt.;1	Developer tools is mijn beste vriend;2	Amateurs, ik weet meteen hoe een website of programma in elkaar zit.;3
+Hou je de nieuwste ontwikkelingen in programmeer talen in de gaten?	Maar natuurlijk hou ik mezelf up-to-date met het laatste nieuws.;3	Waren er ontwikkelingen dan? Visual basic bestaat toch nog steeds?;1	Ik hou sowieso niet echt nieuws rondom programmeren in de gaten.;0	Soms lees ik er wel eens een interessant artikel over;2
