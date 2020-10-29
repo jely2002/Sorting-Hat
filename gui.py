@@ -75,6 +75,7 @@ class Interface:
         question_tuple = vragen.get_question()
         if question_tuple is None:
             print("Finished", vragen.points)
+            vragen.result_export() #UITSLAG EXPORTEREN
             # TODO show score
             return
         question = question_tuple[0]

@@ -1,5 +1,6 @@
 import random
 import os
+import datetime
 
 question_data = None
 total_questions = 0
@@ -66,3 +67,17 @@ def question_answered(question, point, specialisation):
     del question_data[specialisation][question]
     points[specialisation] += point
     answered_questions += 1
+
+def result_export():
+    exportFile = open("uitslag.txt", "w")
+    export_date = datetime.datetime.now()
+    
+    exportFile.write("UITSLAG - TEST - ")
+    exportFile.write(str(export_date.strftime("%d-%m-%Y")) + "\n\nPunten\n")
+    
+    for x, y in points.items():
+        exportFile.write(x + ": " + str(y) + "\n")
+    
+    exportFile.write("\nDe specalisatie met het hoogste aantal punten past het beste volgens onze test bij jou!")
+    
+    exportFile.close()
