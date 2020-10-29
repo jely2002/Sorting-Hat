@@ -13,7 +13,7 @@ class Interface:
         # Set the title of the new window
         self.window.title("Sorteerhoed")
         # Set fixed window size
-        self.window.geometry("600x400")
+        self.window.geometry("600x450")
         # Set window icon
         self.window.iconbitmap("magichat.ico")
         # Remove the maximise button
@@ -32,12 +32,27 @@ class Interface:
 
         # Lower part of GUI
         self.lower_frame = Frame(self.window)
-        self.question = Label(self.lower_frame, text="Is dit een vraag?", anchor='w', font=("Arial Bold", 12))
+        self.question = Label(self.lower_frame, wrap=500, text="Is dit een vraag?", anchor='center', font=("Arial Bold", 12))
         self.answer1 = Button(self.lower_frame, text="Antwoord1", command=lambda: self.submit_answer(self.answer1))
         self.answer2 = Button(self.lower_frame, text="Antwoord2", command=lambda: self.submit_answer(self.answer2))
         self.answer3 = Button(self.lower_frame, text="Antwoord3", command=lambda: self.submit_answer(self.answer3))
         self.answer4 = Button(self.lower_frame, text="Antwoord4", command=lambda: self.submit_answer(self.answer4))
         self.skip = Button(self.lower_frame, text="Sla over", command=lambda: self.load_question())
+
+        # Results part of GUI
+        self.top_result = Label(self.lower_frame, text="De specialisatie die het beste bij jou past is: #ERROR#")
+        self.result_tree = Treeview(self.lower_frame, height=4, selectmode="none", columns=("points", "percent"))
+        self.result_tree['columns'] = ("points", "percent")
+
+        self.result_tree.column("#0", width=90, anchor='center')
+        self.result_tree.heading("#0", text="Specialisatie")
+
+        self.result_tree.column("points", width=60, anchor='center')
+        self.result_tree.heading("points", text="Punten")
+
+        self.result_tree.column("percent", width=240, anchor='center')
+        self.result_tree.heading("percent", text="Hoeveel % past deze specialisatie bij mij?")
+
 
         # Pack all widgets in the right order
         header.pack(padx=10, pady=10)
@@ -71,12 +86,32 @@ class Interface:
         self.progress_bar['value'] = progress
         self.progress_bar.update()
 
+    def show_results(self, points):
+        self.question.pack_forget()
+        self.answer1.pack_forget()
+        self.answer2.pack_forget()
+        self.answer3.pack_forget()
+        self.answer4.pack_forget()
+        self.skip.pack_forget()
+
+        points = {k: v for k, v in sorted(points.items(), key=lambda item: item[1])}
+        for specialisatie in points:
+            percent = round((points[specialisatie] / 15) * 100, 2)
+            self.result_tree.insert('', '0', text=specialisatie, iid=specialisatie, values=(points[specialisatie], str(percent) + "%"))
+
+        self.top_result['text'] = f"De specialisatie die het beste bij jou past is: {list(points.keys())[-1]}"
+        self.result_tree.selection_set(list(points.keys())[-1])
+        self.progress_label['text'] = "Alle vragen zijn afgerond"
+
+        self.top_result.pack(pady=(0, 15))
+        self.result_tree.pack()
+
     def load_question(self):
         question_tuple = vragen.get_question()
         if question_tuple is None:
             print("Finished", vragen.points)
-            vragen.result_export() #UITSLAG EXPORTEREN
-            # TODO show score
+            vragen.result_export() #exporteer de uitslag naar een bestand
+            self.show_results(vragen.points)
             return
         question = question_tuple[0]
         answers = question_tuple[1]
