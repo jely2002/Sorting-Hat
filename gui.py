@@ -110,6 +110,7 @@ class Interface:
         self.description['text'] = "Beschrijving..........................................Beschrijving..........................................Beschrijving..........................................Beschrijving" # TODO Automatically show the right description for every specialisation
         self.result_tree.selection_set(list(points.keys())[-1])
         self.progress_label['text'] = "Alle vragen zijn afgerond"
+        self.progress_bar['value'] = 100
 
         self.top_result.pack(pady=(0, 15))
         self.description.pack(pady=(0, 15))
