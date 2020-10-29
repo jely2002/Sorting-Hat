@@ -74,8 +74,10 @@ def result_export():
     
     exportFile.write("UITSLAG - TEST - ")
     exportFile.write(str(export_date.strftime("%d-%m-%Y")) + "\n\nPunten\n")
-    
-    for x, y in points.items():
+
+    items = list(points.items())
+    items.reverse()
+    for x, y in items:
         exportFile.write(x + ": " + str(y) + "\n")
     
     exportFile.write("\nDe specalisatie met het hoogste aantal punten past het beste volgens onze test bij jou!")
