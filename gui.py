@@ -42,6 +42,7 @@ class Interface:
 
         # Results part of GUI
         self.top_result = Label(self.lower_frame, text="De specialisatie die het beste bij jou past is: #ERROR#")
+        self.description = Label(self.lower_frame, wrap=400, text="Beschrijving..........................................Beschrijving..........................................Beschrijving..........................................Beschrijving", anchor='center')
         self.result_tree = Treeview(self.lower_frame, height=4, selectmode="none", columns=("points", "percent"))
         self.result_tree['columns'] = ("points", "percent")
 
@@ -106,10 +107,12 @@ class Interface:
             self.result_tree.insert('', '0', text=specialisatie, iid=specialisatie, values=(points[specialisatie], str(percent) + "%"))
 
         self.top_result['text'] = f"De specialisatie die het beste bij jou past is: {list(points.keys())[-1]}"
+        self.description['text'] = "Beschrijving..........................................Beschrijving..........................................Beschrijving..........................................Beschrijving" # TODO Automatically show the right description for every specialisation
         self.result_tree.selection_set(list(points.keys())[-1])
         self.progress_label['text'] = "Alle vragen zijn afgerond"
 
         self.top_result.pack(pady=(0, 15))
+        self.description.pack(pady=(0, 15))
         self.result_tree.pack()
 
         self.name_frame.pack(side=LEFT, expand=True)
