@@ -1,3 +1,4 @@
+import codecs
 import random
 import os
 import datetime
@@ -19,7 +20,7 @@ def load_question_data():
         # Sla de naam van het bestand - de laatste 4 karakters op in specialisatie. Bijv: BDAM.txt -> BDAM
         specialisation = file[:-4]
         # Open het bestand als f
-        with open(f"questions/{file}") as f:
+        with codecs.open(f"questions/{file}", "r", "utf-8") as f:
             # Lees alle data in het bestand en split vervolgens het bestand op in regels. En sla deze lijst met regels op in 'lines'
             lines = f.read().split("\n")
             # Voeg deze specialisatie als key toe aan de 'd' dictionary, en als value een lege dictionary.
