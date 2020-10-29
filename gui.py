@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from tkinter.ttk import *
 import vragen
 
@@ -53,6 +54,11 @@ class Interface:
         self.result_tree.column("percent", width=240, anchor='center')
         self.result_tree.heading("percent", text="Hoeveel % past deze specialisatie bij mij?")
 
+        self.name_frame = Frame(self.lower_frame)
+        self.name_label = Label(self.name_frame, text="Vul je naam in om deze uitslag op te slaan:")
+        self.name_entry = Entry(self.name_frame)
+        self.name_button = Button(self.name_frame, text="Opslaan", command=lambda: self.save_results())
+        self.save_confirm = Label(self.lower_frame, text="Je uitslag is opgeslagen!")
 
         # Pack all widgets in the right order
         header.pack(padx=10, pady=10)
@@ -106,11 +112,15 @@ class Interface:
         self.top_result.pack(pady=(0, 15))
         self.result_tree.pack()
 
+        self.name_frame.pack(side=LEFT, expand=True)
+        self.name_label.pack(side=LEFT, padx=5)
+        self.name_entry.pack(side=LEFT, fill=X, padx=5)
+        self.name_button.pack(in_=self.name_frame, side=LEFT, padx=5, pady=15)
+
     def load_question(self):
         question_tuple = vragen.get_question()
         if question_tuple is None:
             print("Finished", vragen.points)
-            vragen.result_export() #exporteer de uitslag naar een bestand
             self.show_results(vragen.points)
             return
         question = question_tuple[0]
@@ -133,6 +143,10 @@ class Interface:
         else:
             self.answer4.pack_forget()
         self.question['text'] = question
+
+    def save_results(self):
+        vragen.result_export(self.name_entry.get())
+        messagebox.showinfo(master=self.window, title="All set!", message="Je resultaten zijn opgeslagen!")
 
     def submit_answer(self, button):
         answer = button['text']

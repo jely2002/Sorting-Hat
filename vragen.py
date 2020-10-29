@@ -68,12 +68,13 @@ def question_answered(question, point, specialisation):
     points[specialisation] += point
     answered_questions += 1
 
-def result_export():
-    exportFile = open("uitslag.txt", "w")
+
+def result_export(name):
     export_date = datetime.datetime.now()
-    
+    exportFile = open(f"Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H.%M')}.txt", "w")
+
     exportFile.write("UITSLAG - TEST - ")
-    exportFile.write(str(export_date.strftime("%d-%m-%Y")) + "\n\nPunten\n")
+    exportFile.write(str(export_date.strftime("%d-%m-%Y %H.%M")) + "\n\nPunten\n")
 
     items = list(points.items())
     items.reverse()
