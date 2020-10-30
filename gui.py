@@ -39,7 +39,7 @@ class Interface:
         self.answer3 = Button(self.lower_frame, text="Antwoord3", command=lambda: self.submit_answer(self.answer3))
         self.answer4 = Button(self.lower_frame, text="Antwoord4", command=lambda: self.submit_answer(self.answer4))
         self.skip = Button(self.lower_frame, text="Sla over", command=lambda: self.load_question())
-
+        self.start = Button(self.lower_frame, text="Starten", command=lambda: self.start_test())
         # Results part of GUI
         self.top_result = Label(self.lower_frame, text="De specialisatie die het beste bij jou past is: #ERROR#")
         self.description = Label(self.lower_frame, wrap=400, text="Beschrijving", anchor='center')
@@ -61,26 +61,25 @@ class Interface:
         self.name_button = Button(self.name_frame, text="Opslaan", command=lambda: self.save_results())
         self.save_confirm = Label(self.lower_frame, text="Je uitslag is opgeslagen!")
 
-        # Pack all widgets in the right order
+        #Pack all widgets in the right order
         header.pack(padx=10, pady=10)
         self.progress_label.pack(padx=15, pady=10)
         self.progress_bar.pack()
+        self.question.pack(anchor=W, fill='both', pady=(5, 15), padx=35)
         can.pack()
         upper_frame.pack(side=TOP)
         separator.pack(pady=15, padx=35, fill='both')
-        self.question.pack(anchor=W, fill='both', pady=(5, 15), padx=35)
-        self.answer1.pack(pady=5)
-        self.answer2.pack(pady=5)
-        self.answer3.pack(pady=5)
-        self.answer4.pack(pady=5)
-        self.skip.pack(pady=(5, 20))
         self.lower_frame.pack(side=TOP)
 
-        # Show the first random question
-        self.load_question()
-
-        # Set the initial progress
-        self.set_progress()
+        #Welcome screen
+        self.start.pack()
+        self.skip.pack_forget()
+        self.question["text"] = "Je krijgt verschillende vragen, met 3 of 4 antwoorden. Kies het antwoord dat het beste bij jouw past!"
+        self.progress_label["text"] = "Ben je ready? Je kan starten met de test!"
+        self.answer1.pack_forget()
+        self.answer2.pack_forget()
+        self.answer3.pack_forget()
+        self.answer4.pack_forget()
 
         # Start the window loop
         self.window.mainloop()
@@ -120,6 +119,23 @@ class Interface:
         self.name_label.pack(side=LEFT, padx=5)
         self.name_entry.pack(side=LEFT, fill=X, padx=5)
         self.name_button.pack(in_=self.name_frame, side=LEFT, padx=5, pady=15)
+
+
+    def start_test(self):
+        self.start.pack_forget()
+        
+        # Pack all widgets in the right order
+        self.answer1.pack(pady=5)
+        self.answer2.pack(pady=5)
+        self.answer3.pack(pady=5)
+        self.answer4.pack(pady=5)
+        self.skip.pack(pady=(5, 20))
+
+        # Show the first random question
+        self.load_question()
+
+        # Set the initial progress
+        self.set_progress()
 
     def load_question(self):
         question_tuple = vragen.get_question()
