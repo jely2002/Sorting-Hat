@@ -72,7 +72,7 @@ def question_answered(question, point, specialisation):
 
 def result_export(name):
     export_date = datetime.datetime.now()
-    exportFile = open(f"Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H.%M')}.txt", "w")
+    exportFile = open(f"uitslagen/Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H.%M')}.txt", "w")
 
     exportFile.write("UITSLAG - TEST - ")
     exportFile.write(str(export_date.strftime("%d-%m-%Y %H.%M")) + "\n\nPunten\n")
