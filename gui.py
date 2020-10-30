@@ -74,7 +74,7 @@ class Interface:
         #Welcome screen
         self.start.pack()
         self.skip.pack_forget()
-        self.question["text"] = "Je krijgt verschillende vragen, met 3 of 4 antwoorden. Kies het antwoord dat het beste bij jouw past!"
+        self.question["text"] = "Je krijgt verschillende vragen met meerkeuze antwoorden. Kies het antwoord dat het beste bij jouw past!"
         self.progress_label["text"] = "Ben je ready? Je kan starten met de test!"
         self.answer1.pack_forget()
         self.answer2.pack_forget()
