@@ -86,15 +86,16 @@ def result_export(name):
     
     exportFile.close()
 
+
 def get_description(specialisatie):
-      if specialisatie == "SE"                
-          return "Je hebt een goed analytisch vermogen, vind het leuk om problemen op te lossen en je bent geinteresseerd in het leren van programmeertalen."
-      if specialisatie == "FICT"
-          return "Je bent iemand die nauwkeurig kan werken, vind het leuk om diep te speuren in vreemde bestanden en software veilig te stellen. Je vind het ook leuk om tools te ontwikkelen die je helpen bij het oplossen van de complexe problemen."
-      if specialisatie == "IOT"
-          return "Je bent een creatief persoon, kan goed overweg met ontwikkelen van hardware en software en je wilt je graag inzetten voor het ontwikkelen van user interfaces en user experiences."
-      if specialisatie == "BDAM"
-          return "Je bent een persoon die snel patronen herkent, je vind het leuk om data te vergelijken, te analyseren en een advies te schrijven voor een een bedrijf. Ook vind je het interessant om data opslag te ontwerpen."
+    if specialisatie == "SE":
+        return "Je hebt een goed analytisch vermogen, vind het leuk om problemen op te lossen en je bent geinteresseerd in het leren van programmeertalen."
+    if specialisatie == "FICT":
+        return "Je bent iemand die nauwkeurig kan werken, vind het leuk om diep te speuren in vreemde bestanden en software veilig te stellen. Je vind het ook leuk om tools te ontwikkelen die je helpen bij het oplossen van de complexe problemen."
+    if specialisatie == "IOT":
+        return "Je bent een creatief persoon, kan goed overweg met ontwikkelen van hardware en software en je wilt je graag inzetten voor het ontwikkelen van user interfaces en user experiences."
+    if specialisatie == "BDAM":
+        return "Je bent een persoon die snel patronen herkent, je vind het leuk om data te vergelijken, te analyseren en een advies te schrijven voor een een bedrijf. Ook vind je het interessant om data opslag te ontwerpen."
                                         
 def mkdir_p(path):
     try:
@@ -104,5 +105,3 @@ def mkdir_p(path):
             pass
         else:
             raise
-                      
-                      
