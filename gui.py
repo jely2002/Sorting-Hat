@@ -39,7 +39,8 @@ class Interface:
         self.answer3 = Button(self.lower_frame, text="Antwoord3", command=lambda: self.submit_answer(self.answer3))
         self.answer4 = Button(self.lower_frame, text="Antwoord4", command=lambda: self.submit_answer(self.answer4))
         self.skip = Button(self.lower_frame, text="Sla over", command=lambda: self.load_question())
-        self.start = Button(self.lower_frame, text="Starten", command=lambda: self.start_test())
+        self.start = Button(self.lower_frame, text="Start", command=lambda: self.start_test())
+
         # Results part of GUI
         self.top_result = Label(self.lower_frame, text="De specialisatie die het beste bij jou past is: #ERROR#")
         self.description = Label(self.lower_frame, wrap=400, text="Beschrijving", anchor='center')
@@ -72,14 +73,9 @@ class Interface:
         self.lower_frame.pack(side=TOP)
 
         #Welcome screen
-        self.start.pack()
-        self.skip.pack_forget()
-        self.question["text"] = "Je krijgt verschillende vragen met meerkeuze antwoorden. Kies het antwoord dat het beste bij jouw past!"
-        self.progress_label["text"] = "Ben je ready? Je kan starten met de test!"
-        self.answer1.pack_forget()
-        self.answer2.pack_forget()
-        self.answer3.pack_forget()
-        self.answer4.pack_forget()
+        self.start.pack(padx=5)
+        self.question["text"] = "Je krijgt 20 meerkeuze vragen. \nKies steeds het antwoord dat het beste bij jou past.\nAan de hand van je antwoorden beveelt deze test een specialisatie aan."
+        self.progress_label["text"] = "Ben je ready? Start de test nu!"
 
         # Start the window loop
         self.window.mainloop()
@@ -119,7 +115,6 @@ class Interface:
         self.name_label.pack(side=LEFT, padx=5)
         self.name_entry.pack(side=LEFT, fill=X, padx=5)
         self.name_button.pack(in_=self.name_frame, side=LEFT, padx=5, pady=15)
-
 
     def start_test(self):
         self.start.pack_forget()
