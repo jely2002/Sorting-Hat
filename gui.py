@@ -88,7 +88,7 @@ class Interface:
         current = vragen.answered_questions
         total = vragen.total_questions
         progress = current / total * 100
-        self.progress_label['text'] = f"Vraag: {current} van de {total}"
+        self.progress_label['text'] = f"Vraag: {current + 1} van de {total}"
         self.progress_bar['value'] = progress
         self.progress_bar.update()
 
