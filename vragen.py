@@ -74,9 +74,9 @@ def question_answered(question, point, specialisation):
 def result_export(name):
     mkdir_p('uitslagen/')
     export_date = datetime.datetime.now()
-    exportFile = open(f"uitslagen/Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H:%M')}.txt", "w")
+    exportFile = open(f"uitslagen/Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H.%M')}.txt", "w")
     exportFile.write("UITSLAG - TEST - ")
-    exportFile.write(str(export_date.strftime("%d-%m-%Y %H:%M")) + "\n\nPunten\n")
+    exportFile.write(str(export_date.strftime("%d-%m-%Y %H.%M")) + "\n\nPunten\n")
     items = list(points.items())
     items.reverse()
     for x, y in items:
