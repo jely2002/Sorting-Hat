@@ -61,7 +61,7 @@ class Interface:
         self.name_button = Button(self.name_frame, text="Opslaan", command=lambda: self.save_results())
         self.save_confirm = Label(self.lower_frame, text="Je uitslag is opgeslagen!")
 
-        #INIT
+        #Pack all widgets in the right order
         header.pack(padx=10, pady=10)
         self.progress_label.pack(padx=15, pady=10)
         self.progress_bar.pack()
