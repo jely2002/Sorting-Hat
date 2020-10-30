@@ -73,30 +73,29 @@ def question_answered(question, point, specialisation):
 
 def result_export(name):
     mkdir_p('uitslagen/')
-    export_date = datetime.datetime.now()
-    exportFile = open(f"uitslagen/Resultaten - {name} - {export_date.strftime('%d-%m-%Y %H:%M')}.txt", "w")
-    exportFile.write("UITSLAG - TEST - ")
-    exportFile.write(str(export_date.strftime("%d-%m-%Y %H:%M")) + "\n\nPunten\n")
-    items = list(points.items())
-    items.reverse()
-    for x, y in items:
-        exportFile.write(x + ": " + str(y) + "\n")
-    
-    exportFile.write("\nDe specalisatie met het hoogste aantal punten past het beste volgens onze test bij jou!")
-    
-    exportFile.close()
+    export_date = datetime.datetime.now().strftime("%d-%m-%Y %H.%M")
+    with open(f"uitslagen/Resultaten - {name} - {export_date}.txt", "w") as exportFile:
+        exportFile.write("UITSLAG - TEST - ")
+        exportFile.write(str(export_date) + "\n\nPunten\n")
+        items = list(points.items())
+        items.reverse()
+        for x, y in items:
+            exportFile.write(x + ": " + str(y) + "\n")
+        exportFile.write("\nDe specalisatie met het hoogste aantal punten past het beste volgens onze test bij jou!")
+        exportFile.close()
 
 
 def get_description(specialisatie):
     if specialisatie == "SE":
         return "Je hebt een goed analytisch vermogen, vind het leuk om problemen op te lossen en je bent geinteresseerd in het leren van programmeertalen."
     if specialisatie == "FICT":
-        return "Je bent iemand die nauwkeurig kan werken, vind het leuk om diep te speuren in vreemde bestanden en software veilig te stellen. Je vind het ook leuk om tools te ontwikkelen die je helpen bij het oplossen van de complexe problemen."
+        return "Je bent iemand die nauwkeurig kan werken, vind het leuk om diep te speuren in vreemde bestanden en software veilig te stellen. Je vind het ook leuk om tools te ontwikkelen die je helpen bij het oplossen van complexe problemen."
     if specialisatie == "IOT":
-        return "Je bent een creatief persoon, kan goed overweg met ontwikkelen van hardware en software en je wilt je graag inzetten voor het ontwikkelen van user interfaces en user experiences."
+        return "Je bent een creatief persoon, kan goed overweg met het ontwikkelen van hardware en software en je wilt je graag inzetten voor het ontwikkelen van user interfaces en user experiences."
     if specialisatie == "BDAM":
         return "Je bent een persoon die snel patronen herkent, je vind het leuk om data te vergelijken, te analyseren en een advies te schrijven voor een een bedrijf. Ook vind je het interessant om data opslag te ontwerpen."
-                                        
+
+
 def mkdir_p(path):
     try:
         os.makedirs(path)
