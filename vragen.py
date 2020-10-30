@@ -86,7 +86,11 @@ def result_export(name):
     
     exportFile.close()
 
-
+def get_description(specialisatie):
+      if specialisatie is SE                
+          return "Je hebt een goed analytisch vermogen"            
+                   
+                      
 def mkdir_p(path):
     try:
         os.makedirs(path)
@@ -95,3 +99,5 @@ def mkdir_p(path):
             pass
         else:
             raise
+                      
+                      
