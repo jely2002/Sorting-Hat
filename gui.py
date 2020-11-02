@@ -105,7 +105,7 @@ class Interface:
         self.top_result['text'] = f"De specialisatie die het beste bij jou past is: {list(points.keys())[-1]}"
         self.description['text'] = vragen.get_description(list(points.keys())[-1])
         self.result_tree.selection_set(list(points.keys())[-1])
-        self.progress_label['text'] = "specialisatie rapport"
+        self.progress_label['text'] = "Specialisatie rapport"
         self.progress_bar['value'] = 100
 
         self.top_result.pack(pady=(0, 15))
