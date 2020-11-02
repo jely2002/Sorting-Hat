@@ -73,7 +73,7 @@ class Interface:
 
         #Welcome screen
         self.start.pack(padx=5)
-        self.question["text"] = (f"Je staat op het punt om de specialisatietest te gaan maken. \nJe krijg meerdere meerkeuze vragen. Kies het antwoord dat het beste bij jouw past. Op deze manier krijg je aan het einde van de specialisatietest een reële uitslag. \n\nAan het einde van de specialisatietest krijg je direct de uitslag. Deze kan je ook opslaan om er later nog eens naar te gaan kijken of te vergelijken met andere kandidaten.\n\nAls je er klaar voor bent kan je hieronder de specialisatietest beginnen.")
+        self.question["text"] = (f"Je staat op het punt om de specialisatietest te gaan maken. \nJe krijgt meerdere meerkeuze vragen. Kies het antwoord dat het beste bij jouw past. Op deze manier krijg je aan het einde van de specialisatietest een reële uitslag. \n\nAan het einde van de specialisatietest krijg je direct de uitslag. Deze kan je ook opslaan om er later nog eens naar te gaan kijken of te vergelijken met andere kandidaten.\n\nAls je er klaar voor bent kan je hieronder de specialisatietest beginnen.")
         self.progress_label["text"] = "Ben je ready? Start de specialisatietest nu!"
         # Start the window loop
         self.window.mainloop()
