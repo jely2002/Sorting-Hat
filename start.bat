@@ -1,1 +1,1 @@
-start "Sorteerhoed" "venv/Scripts/pythonw.exe" main.py
+start "Sorteerhoed" "pythonw.exe" main.py
