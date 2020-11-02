@@ -38,8 +38,8 @@ class Interface:
         self.answer2 = Button(self.lower_frame, text="Antwoord2", command=lambda: self.submit_answer(self.answer2))
         self.answer3 = Button(self.lower_frame, text="Antwoord3", command=lambda: self.submit_answer(self.answer3))
         self.answer4 = Button(self.lower_frame, text="Antwoord4", command=lambda: self.submit_answer(self.answer4))
-        self.skip = Button(self.lower_frame, text="Sla over", command=lambda: self.load_question())
-        self.start = Button(self.lower_frame, text="Start", command=lambda: self.start_test())
+        self.skip = Button(self.lower_frame, text="Later beantwoorden", command=lambda: self.load_question())
+        self.start = Button(self.lower_frame, text="Start specialisatietest", command=lambda: self.start_test())
 
         # Results part of GUI
         self.top_result = Label(self.lower_frame, text="De specialisatie die het beste bij jou past is: #ERROR#")
@@ -65,7 +65,6 @@ class Interface:
         #Pack all widgets in the right order
         header.pack(padx=10, pady=10)
         self.progress_label.pack(padx=15, pady=10)
-        self.progress_bar.pack()
         self.question.pack(anchor=W, fill='both', pady=(5, 15), padx=35)
         can.pack()
         upper_frame.pack(side=TOP)
@@ -74,9 +73,8 @@ class Interface:
 
         #Welcome screen
         self.start.pack(padx=5)
-        self.question["text"] = "Je krijgt 20 meerkeuze vragen. \nKies steeds het antwoord dat het beste bij jou past.\nAan de hand van je antwoorden beveelt deze test een specialisatie aan."
-        self.progress_label["text"] = "Ben je ready? Start de test nu!"
-
+        self.question["text"] = (f"Je staat op het punt om de specialisatietest te gaan maken. \nJe krijg meerdere meerkeuze vragen. Kies het antwoord dat het beste bij jouw past. Op deze manier krijg je aan het einde van de specialisatietest een reële uitslag. \n\nAan het einde van de specialisatietest krijg je direct de uitslag. Deze kan je ook opslaan om er later nog eens naar de gaan kijken of te vergelijken met andere kandidaten.\n\nAls je er klaar voor bent kan je hieronder de specialisatietest beginnen.")
+        self.progress_label["text"] = "Ben je ready? Start de specialisatietest nu!"
         # Start the window loop
         self.window.mainloop()
 
@@ -87,6 +85,8 @@ class Interface:
         self.progress_label['text'] = f"Vraag: {current + 1} van de {total}"
         self.progress_bar['value'] = progress
         self.progress_bar.update()
+        if current >= (total - 5):
+            self.skip.pack_forget()
 
     def show_results(self, points):
         self.question.pack_forget()
@@ -94,6 +94,7 @@ class Interface:
         self.answer2.pack_forget()
         self.answer3.pack_forget()
         self.answer4.pack_forget()
+        self.progress_bar.pack_forget()
         self.skip.pack_forget()
 
         points = {k: v for k, v in sorted(points.items(), key=lambda item: item[1])}
@@ -104,7 +105,7 @@ class Interface:
         self.top_result['text'] = f"De specialisatie die het beste bij jou past is: {list(points.keys())[-1]}"
         self.description['text'] = vragen.get_description(list(points.keys())[-1])
         self.result_tree.selection_set(list(points.keys())[-1])
-        self.progress_label['text'] = "Alle vragen zijn afgerond"
+        self.progress_label['text'] = "specialisatie rapport"
         self.progress_bar['value'] = 100
 
         self.top_result.pack(pady=(0, 15))
@@ -120,6 +121,7 @@ class Interface:
         self.start.pack_forget()
         
         # Pack all widgets in the right order
+        self.progress_bar.pack()
         self.answer1.pack(pady=5)
         self.answer2.pack(pady=5)
         self.answer3.pack(pady=5)
